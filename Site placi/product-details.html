@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Locomotive Plate Details</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="Poze/casting.png" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#about">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="index.html#product" role="button">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#contact">Contact us</a>
+                </li>
+            </ul>
+            <form class="form-inline search-form">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <a onclick="goToCart()" href="cart.html" id="view-cart" class="btn btn-outline-light ml-2">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" class="badge badge-light">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Locomotive Plate Details Section -->
+    <div class="product-container">
+        <div class="product-header">
+            <nav>
+                <ul>
+                    <li><a href="#">Locomotive Plates</a> ></li>
+                    <li><a href="#">Vintage Locomotive Plate - LNER 1940</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="product-details">
+            <!-- Product Image Section -->
+            <div class="product-image">
+                <img src="Poze/ASEA (2).jpeg" alt="Vintage Locomotive Plate" id="main-image">
+                <div class="thumbnail-container">
+                    <img src="Poze/ASEA (2).jpeg" alt="Locomotive Plate Thumbnail" class="thumbnail">
+                    <img src="Poze/ASEA (3).jpeg" alt="Locomotive Plate Thumbnail" class="thumbnail">
+                    <img src="Poze/ASEA (4).jpeg" alt="Locomotive Plate Thumbnail" class="thumbnail">
+                    <img src="Poze/ASEA.jpeg" alt="Locomotive Plate Thumbnail" class="thumbnail">
+                </div>
+            </div>
+
+            <!-- Product Info Section -->
+            <div class="product-info">
+                <h1>Vintage Locomotive Plate - LNER 1940</h1>
+                <p class="ratings">⭐⭐⭐⭐⭐ (18 Ratings)</p>
+                <p class="brand">Brand: LNER</p>
+                <p class="price">
+                    <span class="current-price">Rs. 75,000</span>
+                    <span class="old-price">Rs. 120,000</span>
+                    <span class="discount">-37%</span>
+                </p>
+                <p class="material">Material: Cast Iron</p>
+
+                <div class="quantity">
+                    <label for="quantity">Quantity</label>
+                    <button id="decrease">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button id="increase">+</button>
+                </div>
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const quantityInput = document.getElementById('quantity');
+                        const increaseBtn = document.getElementById('increase');
+                        const decreaseBtn = document.getElementById('decrease');
+                
+                        // Increase quantity
+                        increaseBtn.addEventListener('click', function() {
+                            quantityInput.value = parseInt(quantityInput.value) + 1;
+                        });
+                
+                        // Decrease quantity, but not below 1
+                        decreaseBtn.addEventListener('click', function() {
+                            if (parseInt(quantityInput.value) > 1) {
+                                quantityInput.value = parseInt(quantityInput.value) - 1;
+                            }
+                        });
+                    });
+                </script>
+                
+                <button id="buy-now" onclick="window.location.href='order-details.html';">Buy Now</button>
+                <button id="add-to-cart">Add to Cart</button>
+
+                <!-- Include this script in your HTML file or a separate JS file -->
+                <script>
+               document.addEventListener("DOMContentLoaded", function() {
+    const quantityInput = document.getElementById('quantity');
+    const increaseBtn = document.getElementById('increase');
+    const decreaseBtn = document.getElementById('decrease');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainImage = document.getElementById('main-image');
+    let product = {
+        id: 1, 
+        name: "Vintage Locomotive Plate - LNER 1940",
+        price: 75000,
+        quantity: parseInt(quantityInput.value)
+    };
+    
+    // Increase quantity
+    increaseBtn.addEventListener('click', function() {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+        product.quantity = parseInt(quantityInput.value);
+    });
+
+    // Decrease quantity
+    decreaseBtn.addEventListener('click', function() {
+        if (parseInt(quantityInput.value) > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+            product.quantity = parseInt(quantityInput.value);
+        }
+    });
+
+    // Update main image on thumbnail click
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            mainImage.src = this.src;
+        });
+    });
+
+    // Add to cart function
+    function addToCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let existingProduct = cart.find(item => item.id === product.id);
+        if (existingProduct) {
+            existingProduct.quantity += product.quantity;
+        } else {
+            cart.push(product);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        alert("Item added to cart!");
+    }
+
+    // Update cart count
+    function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cart-count').textContent = totalItems;
+    }
+
+    // Event listener for "Add to Cart"
+    document.getElementById("add-to-cart").addEventListener("click", addToCart);
+
+    // Update cart count on page load
+    updateCartCount();
+});
+
+
+                </script>
+                <div class="warranty">
+                    <p>Warranty: 12 Months Authenticity Guarantee</p>
+                </div>
+
+                <div class="delivery-options">
+                    <p>Delivery Options:</p>
+                    <ul>
+                        <li>Standard Delivery: Rs. 500</li>
+                        <li>Cash on Delivery Available</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Reviews Section -->
+        <div class="product-reviews">
+            <h2>Product Reviews (18 Ratings)</h2>
+            <div class="review">
+                <p>⭐⭐⭐⭐⭐ John D.</p>
+                <p>Absolutely beautiful piece of history! Arrived in great condition, and looks even better in person.</p>
+                <img src="review_plate1.jpg" alt="Review Image">
+            </div>
+
+            <div class="review">
+                <p>⭐⭐⭐⭐⭐ Sarah K.</p>
+                <p>This locomotive plate has a lot of character and is a fantastic addition to my collection. The details are exquisite.</p>
+                <img src="review_plate2.jpg" alt="Review Image">
+            </div>
+        </div>
+    </div>
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript function to change the main image when a thumbnail is clicked
+        document.addEventListener("DOMContentLoaded", function() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.getElementById('main-image');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    mainImage.src = this.src; // Update the main image source with the clicked thumbnail
+                });
+                
+                // Optionally add touch event for mobile
+                thumbnail.addEventListener('touchstart', function() {
+                    mainImage.src = this.src; // Update on touch as well
+                });
+            });
+        });
+    </script>
+    
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <h5>Follow Us</h5>
+                <a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a><br>
+                <a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a><br>
+                <a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5>Quick Links</h5>
+                <a href="#home" class="text-light">Home</a><br>
+                <a href="#about" class="text-light">About</a><br>
+                <a href="#product" class="text-light">Products</a><br>
+                <a href="#contact" class="text-light">Contact Us</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5>Contact Us</h5>
+                <p>Email: mariusturzai@gmail.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+        </div>
+        <hr class="my-4">
+        <p>&copy; 2024 Locomotive Plates Store. All rights reserved.</p>
+    </div>
+</footer>
+
+
+</body>
+</html>
+
+<style>
+/* General Container Adjustments */
+.container-fluid, .container {
+    max-width: 1200px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .container-fluid, .container {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+/* Logo */
+.navbar-brand img {
+    max-height: 80px;
+    width: auto;
+}
+
+
+/* Product Container */
+.product-container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.product-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+
+.product-header nav ul li a {
+    text-decoration: none;
+    color: #007aff;
+}
+
+.product-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.3s ease;
+}
+
+
+.thumbnail-container {
+    width: 100px;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    width: 30px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.thumbnail:hover {
+    opacity: 0.7;
+}
+
+.product-info {
+    width: 50%;
+    max-width: 500px;
+    flex: 1;
+}
+
+h1 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.ratings {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Star ratings */
+.ratings .star {
+    color: #ffcc00;
+    margin-right: 5px;
+}
+
+.brand, .price, .material, .quantity, .warranty, .delivery-options {
+    margin-bottom: 20px;
+}
+
+.current-price {
+    color: #d9534f;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: grey;
+    margin-left: 10px;
+}
+
+.discount {
+    color: #5cb85c;
+    margin-left: 10px;
+}
+
+.quantity input {
+    width: 50px;
+    text-align: center;
+}
+
+button {
+    background-color: #ff8c00;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+#buy-now {
+    background-color: #007aff;
+}
+
+.warranty, .delivery-options {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+/* Product Reviews */
+.product-image img#main-image {
+    width: 100%; 
+    max-width: 500px; 
+    transition: transform 0.3s ease;
+}
+
+.product-reviews {
+    margin-top: 50px;
+}
+
+.product-reviews h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.review {
+    margin-bottom: 20px;
+}
+
+.review img {
+    width: 100px;
+    margin-top: 10px;
+}
+
+/* Add star ratings to reviews */
+.review .stars {
+    display: flex;
+    align-items: center;
+}
+
+.review .stars .star {
+    color: #ffcc00;
+    margin-right: 5px;
+}
+
+.review .expand {
+    color: #007aff;
+    cursor: pointer;
+}
+
+.review .content {
+    display: none;
+}
+
+.review .expand.active + .content {
+    display: block;
+}
+@media (max-width: 768px) {
+    h1{
+        margin-top: 100px;
+    }
+    .product-details {
+        flex-direction: column;
+        align-items: start; /* Centering the entire content */
+    }
+
+    .product-image {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Ensures thumbnails are beneath the main image */
+        align-items: start; /* Centers both the image and thumbnails */
+    }
+
+    .product-image img {
+        max-width: 80%;
+    }
+
+    .thumbnail-container {
+        width: 55px;
+        margin-left: 50%;
+        justify-content: start;
+        margin-top: 10px; /* Space between main image and thumbnails */
+    }
+}
+
+@media (max-width: 480px) {
+    .thumbnail {
+        width: 20px;
+    }
+
+    .thumbnail-container {
+        gap: 5px;
+        justify-content: start;
+        margin-top: 10px; /* Ensures spacing between main image and thumbnails */
+    }
+
+    .product-image img {
+        max-width: 70%;
+    }
+}
+
+</style>

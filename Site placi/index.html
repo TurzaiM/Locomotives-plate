@@ -3,31 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        emailjs.init("7FzFwp8dNwK9EPqxY"); // Replace with your EmailJS User ID
+    })();
+</script>
     <title>Placi feroviare</title>
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="Poze/casting.jpg" alt="Logo">
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="contact.html">Contact</a></li>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="Poze/casting.png" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" > <!-- Center the navbar items -->
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#home" role="button">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#product" role="button">
+                        Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact us</a>
+                </li>
             </ul>
-        </nav>
-    </header>
-    <section class="hero"></section>
-        <div class="hero-content">
-            <h1>Welcome to Locomotive Plates Store</h1>
-            <p>Your one-stop shop for authentic locomotive builders plates.</p>
-            <a href="products.html" class="btn">Shop Now</a>
+            <form class="form-inline my-1 my-lg-0 search-form"> <!-- Added search-form class -->
+                <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <a onclick="goToCart()" href="#" id="view-cart" class="btn btn-outline-light ml-2" >
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" class="badge badge-light">0</span>
+            </a>
+        </div>
+    </nav>
+    
+ 
+ 
+ <!-- Hero Section -->
+<section id="home" class="hero">
+    <img src="https://i.pinimg.com/564x/d3/b2/65/d3b265f8cec6f9c4cb2fa6e332caacc6.jpg" alt="hero" class="hero-image">
+    <div class="hero-content">
+        <h1>Welcome to Locomotive Plates Store</h1>
+        <p>Your one-stop shop for authentic locomotive builders plates.</p>
+        <a href="#product" class="btn btn-primary">Shop Now</a>
+        
+        <button onclick="goToCart()" class="btn btn-primary" >Go to Cart (<span id="cart-count">0</span>)</button>
+    </div>
+</section>
+
+<main>
+    <section id="product" class="product-listing">
+        <div class="container">
+            <h2 class="text-center">Placi fabricatie</h2>
+            <div class="row"> <!-- Use Bootstrap's grid system -->
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/ASEA (3).jpg" alt="Placa Electro-Putere" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 1</h3><!-- Give any title u want to-->
+                        <p>Price: $120</p>
+                        <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product2.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 2</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                               <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                               <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                               <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                               <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                               <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                               <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                               <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                                <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                                <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                                <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"> <!-- Responsive column -->
+                    <div class="product-card text-center border">
+                        <img src="Poze/product3.jpg" alt="Product 2" class="product-image img-fluid"> <!-- Use img-fluid for responsiveness -->
+                        <h3>Product Title 3</h3><!-- Give any title u want to-->
+                        <p>Price: $150</p>
+                                                <a href="product-details.html?id=1" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+            
+                </div>
+            </div>
         </div>
     </section>
+</main>
 
+<!-- About Us Section -->
+<section id="about" class="about-us">
+    <div class="container">
+        <h2 class="text-center">About Us</h2>
+        <p class="lead text-center"><!-- i just add what i felt right u can add in ya lang what eva u want to -->
+            Welcome to Locomotive Plates Store! Your one-stop shop for authentic locomotive builders plates.
+            We are passionate about preserving the rich history of locomotives and providing collectors and enthusiasts 
+            with high-quality, authentic builders plates from various eras and manufacturers.
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Our Mission</h3>
+                <p><!-- if u want to remove it u can  -->
+                    Our mission is to offer a diverse selection of authentic locomotive builders plates, 
+                    ensuring that every piece we sell meets the highest standards of quality and authenticity. 
+                    We aim to be the leading source for collectors, restorers, and anyone who appreciates the 
+                    craftsmanship of locomotive engineering.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h3>Why Choose Us?</h3>
+                <p><!-- if u want to remove it u can  -->
+                    At Locomotive Plates Store, we pride ourselves on our extensive knowledge of locomotive history 
+                    and our commitment to customer satisfaction. Each plate in our collection is carefully sourced 
+                    and authenticated, ensuring you receive a genuine piece of history. Our team is dedicated 
+                    to providing excellent service and support, making your shopping experience as smooth as possible.
+                </p>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="#product" class="btn btn-primary">Browse Our Collection</a><!-- if u want to remove it u can  -->
+        </div>
+    </div>
+</section>
+
+<!-- Contact Us Section -->
+<section id="contact" class="contact-us">
+    <div class="container">
+        <h2 class="text-center">Contact Us</h2>
+        <form onsubmit="sendEmail(event)" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </div>
+</section>
+
+
+    <script type="text/javascript">
+    function sendEmail(event) {
+        event.preventDefault();
+        emailjs.sendForm('service_8ou8vsf', 'template_l0pnkln', event.target)
+            .then(function(response) {
+                alert('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                alert('FAILED...', error);
+            });
+    }
+</script>
+
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="cart-items">
+                <p>Your cart is empty.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="checkout-button">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <h5>Follow Us</h5>
+                <a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a><br>
+                <a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a><br>
+                <a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5>Quick Links</h5>
+                <a href="#home" class="text-light">Home</a><br>
+                <a href="#about" class="text-light">About</a><br>
+                <a href="#product" class="text-light">Products</a><br>
+                <a href="#contact" class="text-light">Contact Us</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5>Contact Us</h5>
+                <p>Email: mariusturzai@gmail.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+        </div>
+        <hr class="my-4">
+        <p>&copy; 2024 Locomotive Plates Store. All rights reserved.</p>
+    </div>
+</footer>
+
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
